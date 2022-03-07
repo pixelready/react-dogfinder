@@ -20,20 +20,20 @@ import React, { useState } from 'react';
 
 function App() {
 
-  const [dogs, setDogs] = useState([]);
-  const [hasData, setHasData] = useState(false);
+  const [dogs, setDogs] = useState(null);
 
-  if (!hasData) {
-    getDogs();
-  }
-
+  
   async function getDogs() {
     const dogs = await axios.get("http://localhost:5000/dogs")
     setDogs(currDogs => [...dogs.data]);
-    setHasData(currData => true);
   }
 
-  console.log(dogs);
+  if (!dogs) {
+    getDogs();
+    return <h1>Loading...</h1>
+  }
+
+  console.log("APP DOG STATE:", dogs);
 
   return (
     <div className="App">

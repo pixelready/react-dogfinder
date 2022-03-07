@@ -2,12 +2,19 @@ import {useParams} from "react-router-dom";
 
 function DogDetails({ dogs }){
     const params = useParams();
-    return <p>I'm in {params.name}'s details page.</p>
+    console.log("DOGS: ", dogs, "name param:", params.name);
 
-    const dog = dogs.filter(d => d.name === params.name)[0]
-
+    const dog = dogs.filter(d => d.src === params.name)[0];
+    console.log("DOG:", dog);
     return (
-
+        <div>
+            <h1>{dog.name}</h1>
+            <img height="250px" width="250px" alt={`${dog.name}`} src={`../${dog.src}.jpg`} />
+            <h2>Facts</h2>
+            <ul>
+                {dog.facts.map((f,idx) => <li key={idx}>{f}</li>)}
+            </ul>
+        </div>
     )
 
 };
