@@ -1,5 +1,14 @@
 import {useParams} from "react-router-dom";
 
+/**Returns information about a specific Dog
+ * 
+ * Props: dogs [{name: "", age: #, src: "", facts: []}]
+ * 
+ * State: None
+ * 
+ * App --> DogDetails
+ */
+
 function DogDetails({ dogs }){
     const params = useParams();
     console.log("DOGS: ", dogs, "name param:", params.name);

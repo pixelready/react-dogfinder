@@ -1,5 +1,15 @@
 import { NavLink } from "react-router-dom";
 
+/**
+ * Returns list of dog names as links
+ * 
+ * Props: dogs [{name: "", age: #, src: "", facts: []}]
+ * 
+ * State: None
+ * 
+ * App --> Nav
+ */
+
 function Nav({dogs}){
     return (
         <div>

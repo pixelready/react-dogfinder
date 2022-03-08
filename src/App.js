@@ -6,23 +6,22 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import axios from 'axios';
 import React, { useState } from 'react';
 
-// const dogs = [
-//     {
-//       name: "Whiskey",
-//       age: 5,
-//       src: "whiskey",
-//       facts: [
-//         "Whiskey loves eating popcorn.",
-//         "Whiskey is a terrible guard dog.",
-//         "Whiskey wants to cuddle with you!"]
-//       }
-// ];
+/** Dog Finder App
+ * Controls routes and renders pages.
+ * 
+ * Props: None
+ * 
+ * State: Dogs [{name: "", age: #, src: "", facts: []}]
+ * 
+ * App --> [DogDetails, DogList]
+ */
 
 function App() {
 
   const [dogs, setDogs] = useState(null);
 
   
+  //Axios call for all dogs
   async function getDogs() {
     const dogs = await axios.get("http://localhost:5000/dogs")
     setDogs(currDogs => [...dogs.data]);
@@ -32,8 +31,6 @@ function App() {
     getDogs();
     return <h1>Loading...</h1>
   }
-
-  console.log("APP DOG STATE:", dogs);
 
   return (
     <div className="App">
